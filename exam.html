@@ -1,0 +1,256 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Exam</title>
+    <style>
+         #big{
+            background-color: lightcyan;
+            height: 500px;
+            margin-bottom: 10px;
+            margin-top: 30px;
+            border-radius:10px; 
+            text-align: center;
+        }
+        #mainwrapper{
+            background-color: lightgray;
+            height: 400px;
+            margin-bottom: 10px;
+            margin-top: 30px;
+            border-radius:10px; 
+            text-align: center;
+        }
+        
+    </style>
+    <script>
+   
+
+window.addEventListener('load',function(){
+    var examObj={
+    name:"C Exam", 
+    time: 30,
+    questions:[
+                { 
+                    head: "Full form of URL is ?" ,
+                    answers :[
+                        "a.Uniform Resource Locator",
+                        "b.Uniform Resource Link",
+                        "c.Uniform Registered Locator",
+                        "d.Unified Resource Link"
+                
+                    ],
+                    correctAnswer:0,
+                    grade:1
+
+                },
+                 
+
+                { 
+                    head: "Inside which HTML element do we put the JavaScript?" ,
+                    answers :[
+                        "a.<script>",
+                        "b. <js>",
+                        "c.<javascript>",
+                        "d.<scripting>"
+                
+                    ],
+                    correctAnswer:0,
+                    grade:1
+
+                },
+
+                { 
+                    head: "in which of the following form, data is stored in computer ?" ,
+                    answers :[
+                        "a.Decimal",
+                        "b.Binary",
+                        "c.HexaDecimal",
+                        "d.Octal"
+                
+                    ],
+                    correctAnswer:1,
+                    grade:1
+
+                }
+            ]
+};
+
+var examObj2={
+    name:" js Exam", 
+    time: 30,
+    questions:[
+                { 
+                    head: "Full form of URL is ?" ,
+                    answers :[
+                        "a.Uniform Resource Locator",
+                        "b.Uniform Resource Link",
+                        "c.Uniform Registered Locator",
+                        "d.Unified Resource Link"
+                
+                    ],
+                    correctAnswer:0,
+                    grade:1
+
+                }
+                ,
+
+
+                { 
+                    head: "in which of the following form, data is stored in computer ?" ,
+                    answers :[
+                        "a.Decimal",
+                        "b.Binary",
+                        "c.HexaDecimal",
+                        "d.Octal"
+                
+                    ],
+                    correctAnswer:1,
+                    grade:1
+
+                }
+            ]
+};
+console.log(examObj2);
+    //select mainwrapper div 
+    //first exam
+    questions =examObj.questions;
+    mainwrapper =document.getElementById("mainWrapper");
+    examhead= document.createElement('h2');
+    examhead.style.color="blue";
+    headex = examObj.name;
+    examhead.innerText=headex;
+    mainwrapper.appendChild(examhead);
+   
+   start.addEventListener('click',begin);
+   next.addEventListener('click',nextq);
+   prev.addEventListener('click',previousq);
+   finish.addEventListener('click',finishq)
+   //span for time
+
+   secspan = document.createElement('span');
+   secspan.style.backgroundColor="yellow";
+   secspan.style.width="100px";
+
+    sectimer = 59;
+
+
+});   //end of load
+
+function begin(){
+    k=0;
+
+    
+    newquest =questions[0];
+    creating();
+    start.style.visibility ="hidden";
+   
+   starting= setInterval(starttimer,1000);
+   
+  
+     
+}
+   
+
+
+function nextq(){
+    k++;
+    if (k>=questions.length){
+        k=0;
+    }
+    creating();
+}
+
+function previousq(){
+    k--;
+    if (k<0){
+        k= questions.length -1;
+    }
+    creating();
+   }
+
+function starttimer(){
+       
+    
+       secspan.innerText= "time:"+sectimer--;
+       if(sectimer<0){
+        
+        alert("time up");
+        finishq();
+        
+        
+
+       }
+      
+      big.appendChild(secspan);
+ };
+
+ function creating(){
+    mainwrapper.innerText ="";
+    newquest =questions[k];
+    firsthead = newquest.head;
+   qhead = document.createElement('h5');
+   qhead.innerText= firsthead;
+   mainwrapper.appendChild(qhead);
+    //creat answers
+   
+
+  answer = newquest.answers;
+   for(var i =0;i<answer.length ;i++){
+    ans = document.createElement('input');
+    ans.setAttribute('type','radio');
+    ans.setAttribute('name','radio');
+    ansspan = document.createElement('span');
+    ansspan.innerText = newquest.answers[i];
+    mainwrapper.appendChild(ans);
+    mainwrapper.appendChild(ansspan);
+
+   }
+
+ }
+
+ function finishq(){
+     big.innerText="";
+     clearInterval(starting);
+     big.innerText = 'Start js exam';
+ }
+//  function result(){
+//      score =0;
+//      if ()
+//  }
+
+
+   
+
+
+    
+    </script>
+</head>
+<body>
+ <div id="big">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div id="mainWrapper" class="col-10 offset-1">
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <input id="start"  class="offset-4 col-1 btn btn-sm btn-default" type="button" value="start ">
+            <input id="next"  class="col-1 btn btn-sm btn-success ml-2"  type="button" value="next">
+            <input id ="prev"  class="col-1 btn btn-sm btn-success ml-2"  type="button" value="prev">
+            <input id ="finish"  class="col-1 btn btn-sm btn-success ml-2"  type="button" value="finish">
+        </div> 
+
+    </div>
+</div>
+
+    
+
+    <script src="js/JQuery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="exam.js"></script>
+</body>
+</html>
